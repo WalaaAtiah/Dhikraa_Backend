@@ -20,7 +20,7 @@ from .views import MyTokenObtainPairView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/things/", include("things.urls")),
+    path("api/v1/tests/", include("tests.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path(
         "api/token/",
@@ -32,4 +32,6 @@ urlpatterns = [
         jwt_views.TokenRefreshView.as_view(),
         name="token_refresh",
     ),
+    path("api/accounts/", include("accounts.api.urls","accounts_api")),
+
 ]

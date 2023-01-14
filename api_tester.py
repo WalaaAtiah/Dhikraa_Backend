@@ -9,7 +9,7 @@ load_dotenv(dotenv_path=dotenv_path)
 
 # NOTE: Adjust these settings as needed in project/.env
 API_HOST = os.getenv("TEST_API_HOST") or "http://localhost:8000"
-RESOURCE_URI = os.getenv("TEST_RESOURCE_URI") or "things"
+RESOURCE_URI = os.getenv("TEST_RESOURCE_URI") or "tests"
 USERNAME = os.getenv("TEST_USERNAME")
 PASSWORD = os.getenv("TEST_PASSWORD")
 
@@ -81,7 +81,7 @@ class ApiTester:
 
         return response.json()
 
-    # TODO adjust parameter names to match API
+    # test adjust parameter names to match API
     def create(self, name, description, owner):
         """creates a resource in api
 
