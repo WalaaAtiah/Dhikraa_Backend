@@ -33,5 +33,8 @@ urlpatterns = [
         name="token_refresh",
     ),
     path("api/accounts/", include("accounts.api.urls","accounts_api")),
+    path('api/v1/todo/',include('todo.urls')),
+    path('api/v1/quiz/',include('quiz.urls')),
+
 
 ]
