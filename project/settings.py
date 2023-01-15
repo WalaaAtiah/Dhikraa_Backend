@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     # local
     "accounts",
     "tests",
+    'todo',
+    'quiz',
 ]
 
 MIDDLEWARE = [
