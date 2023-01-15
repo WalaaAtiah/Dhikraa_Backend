@@ -13,7 +13,8 @@ class CustomUserAdmin(UserAdmin):
         "username",
         "email",
         "birthday",
-        "phone_number"
+        "phone_number",
+        "location"
 
     ]
     add_fieldsets=((
@@ -22,11 +23,11 @@ class CustomUserAdmin(UserAdmin):
             }
         ),(
             'personal information',{
-                'fields':('first_name','last_name',"phone_number","birthday"),
+                'fields':('first_name','last_name',"phone_number","birthday","location"),
             }
         ),)
 
-    
+
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
