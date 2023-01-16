@@ -75,3 +75,18 @@ The backend functionalities can be divided into 2 categories, those that serve t
 - Run makemigrations and migrate commands
 - Run `collectstatic` if needed.
 - Optional: Update `api_tester.py`
+
+## Authentication and Permission for models
+
+| API end-points        | HTTP Method   | Authentication  | Permission  | Result                                       |
+|---------------------- |-------------  |------------   |------------  |------------------------------------------    |
+| /todo             | GET           | User          | User         | List of tasks for this user                         |
+| /todo             | POST          | User          | User         | Create new task                           |
+| /todo/{todo_pk}| GET           | User          | User         | Retrieve details of a particular task       |
+| /todo/{todo_pk}| PUT           | User         | User        | Update a particular task's info       |
+| /todo/{todo_pk}| DELETE        | User         | User        | Delete a particular task's details from DB  |
+| /quiz             | GET           | User          | User         | List of quizzes                             |
+| /quiz             | POST          | Admin          | Admin         | Create new question                           |
+| /quiz/{quiz_pk}| GET           | Admin          | Admin         | Retrieve details of a particular question       |
+| /quiz/{quiz_pk}| PUT           | Admin         | Admin        | Update a particular question's info       |
+| /quiz/{quiz_pk}| DELETE        | Admin         | Admin        | Delete a particular question's details from DB  |
