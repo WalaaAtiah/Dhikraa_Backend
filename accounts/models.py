@@ -6,6 +6,7 @@ class CustomUser(AbstractUser):
     phone_number=models.CharField(max_length=20)
     birthday=models.DateField(null=True, blank=True)
     location=models.CharField(max_length=20)
+    gender=models.CharField(max_length=20)
 
     # add additional fields in here
 

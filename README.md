@@ -39,54 +39,52 @@ The backend functionalities can be divided into 2 categories, those that serve t
 
 7. if you create anew app (module) run this command in another template
    * docker-compose run web python manage.py makemigrations
-   * docker-compose run web python manage.py migrate
+  * docker-compose run web python manage.py migrate
 
-8. **superuser**
+
+8. **run in local**
+   * `python manage.py makemigrations`
+   * `python manage.py migrate`
+   * `python manage.py runserver`
+
+
+9.  **superuser**
+
+
     username :admin
+
     password:admin
 
 
 ## Getting Started
-1. Getting the Access and the Refresh Tokens
-   ![image](./assets/database.png)
+## 1. custom user Authentication
+<br>
+
+| API end-points   | HTTP Method   | Authentication  | Permission  | body                      | Result                        |
+|----------------- |-------------  |------------   |------------   |-----------------------     |--------------------------     |
+| api/token/       | post          | user          | user          | {"username":""  ,"password":""  }  |{access token , refresh token }
+| api/accounts/register/    | POST     |   allowany    | allowany          |   {"username":""  ,"password":"",password2,email,  }   | sign up the new user |
+| api/accounts/change_password/<int:pk>/      | put           | authUser          | authUser          |   {"password":""  ,"password2":"",old_password,  } & send the access token   | update the password |
+| api/accounts/update_profile/<int:pk>/      | put           | authUser          | authUser          |   {"password":""  ,"password2":"",old_password,  } & send the access token   | update the user profile |
+| api/accounts/users/      | get           | authUser          | authUser          |     send the access token   | get list of user   |
+| api/accounts/users/ <str:username>     | get           | authUser          | authUser          |     send the access token   | get data for specific user   |
 
 
+<br>
 
 
-
-## Customization Steps
-
-- DO NOT migrate yet
-- add additional dependencies as needed
-  - Re-export requirements.txt as needed
-- change `tests` folder to the app name of your choice
-- Search through entire code base for `test`,`tests` and `tests` to modify code to use your resource
-  - `project/settings.py`
-  - `project/urls.py`
-  - App's files
-    - `views.py`
-    - `urls.py`
-    - `admin.py`
-    - `serializers.py`
-    - `permissions.py`
-- Update testModel with fields you need
-  - Make sure to update other modules that would be affected by Model customizations. E.g. serializers, tests, etc.
-- Rename `project/.env.sample` to `.env` and update as needed
-- Run makemigrations and migrate commands
-- Run `collectstatic` if needed.
-- Optional: Update `api_tester.py`
-
-## Authentication and Permission for models
+## 2.  Authentication and Permission for models
+<br>
 
 | API end-points        | HTTP Method   | Authentication  | Permission  | Result                                       |
-|---------------------- |-------------  |------------   |------------  |------------------------------------------    |
-| /todo             | GET           | User          | User         | List of tasks for this user                         |
-| /todo             | POST          | User          | User         | Create new task                           |
-| /todo/{todo_pk}| GET           | User          | User         | Retrieve details of a particular task       |
-| /todo/{todo_pk}| PUT           | User         | User        | Update a particular task's info       |
-| /todo/{todo_pk}| DELETE        | User         | User        | Delete a particular task's details from DB  |
-| /quiz             | GET           | User          | User         | List of quizzes                             |
-| /quiz             | POST          | Admin          | Admin         | Create new question                           |
-| /quiz/{quiz_pk}| GET           | Admin          | Admin         | Retrieve details of a particular question       |
-| /quiz/{quiz_pk}| PUT           | Admin         | Admin        | Update a particular question's info       |
-| /quiz/{quiz_pk}| DELETE        | Admin         | Admin        | Delete a particular question's details from DB  |
+|---------------------- |-------------  |------------   |------------  |------------------------------------------     |
+| /todo                 | GET           | User          | User         | List of tasks for this user                   |
+| /todo                 | POST          | User          | User         | Create new task                               |
+| /todo/{todo_pk}       | GET           | User          | User         | Retrieve details of a particular task         |
+| /todo/{todo_pk}       | PUT           | User          | User         | Update a particular task's info               |
+| /todo/{todo_pk}       | DELETE        | User          | User         | Delete a particular task's details from DB    |
+| /quiz                 | GET           | User          | User         | List of quizzes                               |
+| /quiz                 | POST          | Admin         | Admin        | Create new question                           |
+| /quiz/{quiz_pk}       | GET           | Admin         | Admin        | Retrieve details of a particular question     |
+| /quiz/{quiz_pk}       | PUT           | Admin         | Admin        | Update a particular question's info           |
+| /quiz/{quiz_pk}       | DELETE        | Admin         | Admin        | Delete a particular question's details from DB|
