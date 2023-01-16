@@ -14,7 +14,8 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "birthday",
         "phone_number",
-        "location"
+        "location",
+        "gender"
 
     ]
     add_fieldsets=((
@@ -23,7 +24,7 @@ class CustomUserAdmin(UserAdmin):
             }
         ),(
             'personal information',{
-                'fields':('first_name','last_name',"phone_number","birthday","location"),
+                'fields':('first_name','last_name',"phone_number","birthday","location","gender"),
             }
         ),)
 
