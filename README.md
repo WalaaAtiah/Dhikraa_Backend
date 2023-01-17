@@ -20,6 +20,11 @@ The website can be help people to make his lifestyle organize with many useful a
 
 ## Useful Notes
 The backend functionalities can be divided into 2 categories, those that serve the frontend app (NEXT js), and those used for the administration of the store (which is different from the Django Admin).
+<br>
+
+## heroku link :<https://dhiker-api-v1.herokuapp.com/>
+
+<br>
 
 ## Install (Run) with Docker
 
